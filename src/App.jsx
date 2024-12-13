@@ -1,24 +1,24 @@
 import { BrowserRouter, Routes, Route } from 'react-router'
 
-import Login from './pages/login'
+import Manager from './pages/manager'
 import Signup from './pages/signup'
-import Kanban from './pages/kanban'
+import Login from './pages/login'
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route
+          element={<Manager />}
           path="/"
-          element={<Kanban />}
         />
         <Route
-          path="/login"
           element={<Login />}
+          path="/login"
         />
         <Route
-          path="/signup"
           element={<Signup />}
+          path="/signup"
         />
       </Routes>
     </BrowserRouter>
