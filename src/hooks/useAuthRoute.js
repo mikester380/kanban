@@ -19,7 +19,8 @@ export default function useAuthRoute() {
       }
     })
 
-    const { data: subscription } =
+    // prettier-ignore
+    const { data: { subscription } } =
       api.auth.onAuthStateChange((event) => {
         if (event === 'SIGNED_OUT') {
           navigate('/login')
