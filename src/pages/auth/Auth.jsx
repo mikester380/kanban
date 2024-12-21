@@ -4,7 +4,6 @@ import s from './Auth.module.scss'
 
 import SignInForm from './SignInForm'
 import SignUpForm from './SignUpForm'
-import TextField from '@/components/ui/text-field'
 
 const copy = {
   login: {
@@ -45,10 +44,6 @@ export default function Auth() {
         </header>
         {!newUser && <SignInForm swapForm={swapForm} />}
         {newUser && <SignUpForm swapForm={swapForm} />}
-        <TextField
-          label="Text Field (idle)"
-          placeholder="Enter a task name"
-        />
       </div>
     </div>
   )

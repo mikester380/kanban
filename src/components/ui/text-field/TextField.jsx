@@ -3,14 +3,14 @@ import s from './TextField.module.scss'
 import clsx from 'clsx'
 
 const TextField = forwardRef((props, ref) => {
+  const [hasError, setHasError] = useState(false)
   const {
-    label,
-    onChange,
     required = false,
+    onChange,
     className,
+    label,
     ...otherProps
   } = props
-  const [hasError, setHasError] = useState(false)
 
   return (
     <label className={clsx(className, s.field)}>
@@ -30,7 +30,7 @@ const TextField = forwardRef((props, ref) => {
           className={clsx(hasError && s.error)}
           // required={required}
 
-          // this input is controlled, so the "value" prop is being applied here
+          // this input maybe controlled, so the "value" prop is being applied here
           {...otherProps}
         />
         {hasError && (
