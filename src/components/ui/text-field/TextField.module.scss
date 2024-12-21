@@ -1,0 +1,47 @@
+.field {
+  display: grid;
+  gap: 8px;
+
+  .label {
+    @include font0-props(12, 2);
+    color: $medium-grey;
+  }
+
+  .input_field {
+    --pad-x: 16px;
+    position: relative;
+    @include font0-props(13, 2);
+
+    & input {
+      display: block;
+      width: 100%;
+      height: 40px;
+      padding: 8px var(--pad-x);
+      font: inherit;
+      color: $black;
+      border: 1px solid
+        color.change($medium-grey, $alpha: 0.25);
+      border-radius: 4px;
+
+      &.error {
+        border: 1px solid $mandy;
+      }
+
+      &::placeholder {
+        color: color.change($black, $alpha: 0.25);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .error_message {
+      position: absolute;
+      transform: translateY(-50%);
+      top: 50%;
+      right: var(--pad-x);
+      color: $mandy;
+    }
+  }
+}

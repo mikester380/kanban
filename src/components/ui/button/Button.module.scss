@@ -1,0 +1,55 @@
+.button {
+  @extend %unstyled-button;
+  color: $white;
+  transition: all 0.3s ease-in-out;
+
+  &.stretched {
+    width: 100%;
+  }
+
+  &.small {
+    @include font0-props(13, 2);
+    padding: 8px 18px;
+    border-radius: 20px;
+
+    &.stretched {
+      padding: 8px 0;
+    }
+  }
+
+  &.large {
+    padding: 14px 17px;
+    border-radius: 24px;
+    @include font0-props(15, 2);
+
+    &.stretched {
+      padding: 14px 0;
+    }
+  }
+
+  &.destroy {
+    background: $mandy;
+    color: $white;
+
+    &:hover {
+      background: $monalisa;
+    }
+  }
+
+  &.primary {
+    background: $main-purple;
+
+    &:hover {
+      background: $main-purple2;
+    }
+  }
+
+  &.secondary {
+    background: color.change($main-purple, $alpha: 0.1);
+    color: $main-purple;
+
+    &:hover {
+      background: color.change($main-purple, $alpha: 0.25);
+    }
+  }
+}

@@ -23,6 +23,7 @@ export default defineConfig({
         ],
         additionalData: `
           // auto imports for all scss files.
+          @use 'sass:color';
           @import 'vendors';
           @import 'abstracts';
         `,

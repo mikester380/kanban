@@ -1,0 +1,19 @@
+.wrapper {
+  padding: 0 17px;
+
+  .shelf {
+    padding-top: 19px;
+    margin-bottom: 82px;
+  }
+
+  .copy {
+    @include font0-props(13, 2);
+    max-width: 251px;
+    margin-bottom: 61px;
+
+    h1 {
+      @include font0-props(18, 2);
+      margin-bottom: 5px;
+    }
+  }
+}

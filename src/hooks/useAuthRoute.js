@@ -6,26 +6,26 @@ export default function useAuthRoute() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    api.auth.getSession().then(({ data, error }) => {
-      if (error) {
-        console.log(error)
+    api.auth.getSession().then((res) => {
+      if (res.error) {
+        console.log(res.error)
         return
       }
 
-      const { session } = data
+      const { session } = res.data
 
       if (!session) {
-        navigate('/login')
+        navigate('/auth')
       }
     })
 
-    // prettier-ignore
-    const { data: { subscription } } =
-      api.auth.onAuthStateChange((event) => {
+    const subscription = api.auth.onAuthStateChange(
+      (event) => {
         if (event === 'SIGNED_OUT') {
-          navigate('/login')
+          navigate('/auth')
         }
-      })
+      }
+    ).data.subscription
 
     return () => subscription.unsubscribe()
   }, [])

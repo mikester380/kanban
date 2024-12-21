@@ -6,13 +6,13 @@ export default function useNoAuthRoute() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    api.auth.getSession().then(({ data, error }) => {
-      if (error) {
-        console.log(error)
+    api.auth.getSession().then((res) => {
+      if (res.error) {
+        console.log(res.error)
         return
       }
 
-      const { session } = data
+      const { session } = res.data
 
       if (session) {
         navigate('/')
