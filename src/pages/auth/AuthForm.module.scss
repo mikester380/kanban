@@ -1,0 +1,26 @@
+form {
+  .main {
+    display: grid;
+    gap: 17px;
+    margin-bottom: 22px;
+  }
+
+  .others {
+    display: flex;
+    justify-content: space-between;
+
+    .recover {
+      @extend %unstyled-link;
+    }
+
+    .swap {
+      @extend %unstyled-button;
+    }
+
+    .swap,
+    .recover {
+      @include font0-props(12, 2);
+      color: $main-purple;
+    }
+  }
+}

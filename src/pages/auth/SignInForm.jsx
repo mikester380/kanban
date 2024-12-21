@@ -1,24 +1,26 @@
 import { useState } from 'react'
-import s from './SignInForm.module.scss'
+import { Link } from 'react-router'
+import s from './AuthForm.module.scss'
 
 import TextField from '@/components/ui/text-field'
 import Button from './Button'
 
 export default function SignInForm(props) {
+  const { swapForm } = props
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const { swapForm } = props
+  const [submitting, setSubmitting] = useState(false)
 
   async function onSignIn(event) {
     event.preventDefault()
 
-    setLoading(true)
+    setSubmitting(true)
   }
 
   return (
     <form onSubmit={onSignIn} className={s.form}>
-      <div className={s.main_form}>
+      <div className={s.main}>
         <TextField
           onChange={(value) => setEmail(value)}
           label="Email Address"
@@ -33,17 +35,17 @@ export default function SignInForm(props) {
           type="password"
           value={password}
         />
-        <Button>
-          {!loading && 'Login'}
-          {loading && 'Logging In...'}
+        <Button className={s.submit}>
+          {!submitting && 'Login'}
+          {submitting && 'Logging In...'}
         </Button>
       </div>
       <div className={s.others}>
-        <a href="#" className={s.recover}>
+        <Link to="#" className={s.recover}>
           Recover Password?
-        </a>
+        </Link>
         <button onClick={swapForm} className={s.swap}>
-          ...Or Sign up
+          Or Sign up
         </button>
       </div>
     </form>

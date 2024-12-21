@@ -6,7 +6,7 @@ export const api = createClient(
   import.meta.env.VITE_SUPABASE_KEY
 )
 
-export async function signUp(user) {
+export async function signup(user) {
   const res = await api.auth.signUp(user)
 
   if (res.error) {
