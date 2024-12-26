@@ -33,11 +33,11 @@ export default function SignUpForm(props) {
       return
     }
 
-    // try to create new user
+    // try to create a new user
     try {
       await createNewUser({ email: emailAddress, password })
       toast.success(
-        "You're in! Check your a email for a link to verify your account.",
+        "You're in! Check your email for a link to verify your account.",
         { duration: Infinity }
       )
     } catch (error) {
