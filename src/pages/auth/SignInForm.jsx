@@ -9,7 +9,7 @@ import Button from './Button'
 export default function SignInForm(props) {
   const { swapForm } = props
 
-  const [email, setEmail] = useState('')
+  const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
@@ -21,11 +21,11 @@ export default function SignInForm(props) {
     <form onSubmit={onSignIn} className={s.form}>
       <div className={s.main}>
         <TextField
-          onChange={(value) => setEmail(value)}
+          onChange={(value) => setEmailAddress(value)}
           label="Email Address"
           placeholder="user@kanban.com"
           type="email"
-          value={email}
+          value={emailAddress}
         />
         <TextField
           onChange={(value) => setPassword(value)}
@@ -35,8 +35,7 @@ export default function SignInForm(props) {
           value={password}
         />
         <Button className={s.submit} disabled={submitting}>
-          {!submitting && 'Login'}
-          {submitting && 'Logging In...'}
+          Login
         </Button>
       </div>
       <div className={s.others}>
