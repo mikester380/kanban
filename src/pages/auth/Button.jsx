@@ -1,10 +1,15 @@
 import s from './Button.module.scss'
+import clsx from 'clsx'
 
 export default function Button(props) {
-  const { children } = props
+  const { children, className, ...otherProps } = props
 
   return (
-    <button type="submit" className={s.button}>
+    <button
+      {...otherProps}
+      type="submit"
+      className={clsx(className, s.button)}
+    >
       {children}
     </button>
   )

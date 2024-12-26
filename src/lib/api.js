@@ -1,15 +1,17 @@
 import { createClient } from '@supabase/supabase-js'
 
 // setup supabase client
-export const api = createClient(
+const api = createClient(
   import.meta.env.VITE_SUPABASE_URL,
   import.meta.env.VITE_SUPABASE_KEY
 )
 
-export async function signup(user) {
+async function createNewUser(user) {
   const res = await api.auth.signUp(user)
 
   if (res.error) {
-    throw error
+    throw res.error
   }
 }
+
+export { api, createNewUser }

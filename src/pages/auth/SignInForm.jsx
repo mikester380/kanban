@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
+import { toast } from 'sonner'
 import s from './AuthForm.module.scss'
 
 import TextField from '@/components/ui/text-field'
@@ -14,8 +15,6 @@ export default function SignInForm(props) {
 
   async function onSignIn(event) {
     event.preventDefault()
-
-    setSubmitting(true)
   }
 
   return (
@@ -35,7 +34,7 @@ export default function SignInForm(props) {
           type="password"
           value={password}
         />
-        <Button className={s.submit}>
+        <Button className={s.submit} disabled={submitting}>
           {!submitting && 'Login'}
           {submitting && 'Logging In...'}
         </Button>
@@ -44,7 +43,11 @@ export default function SignInForm(props) {
         <Link to="#" className={s.recover}>
           Recover Password?
         </Link>
-        <button onClick={swapForm} className={s.swap}>
+        <button
+          type="button"
+          onClick={swapForm}
+          className={s.swap}
+        >
           Or Sign up
         </button>
       </div>
