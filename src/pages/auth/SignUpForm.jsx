@@ -41,7 +41,7 @@ export default function SignUpForm(props) {
         { duration: Infinity }
       )
     } catch (error) {
-      toast.error('An error occured. Try again.')
+      toast.error('Something went wrong. Try again.')
     }
   }
 
