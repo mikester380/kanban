@@ -35,6 +35,7 @@ export default function SignUpForm(props) {
 
     // try to create a new user
     try {
+      setSubmitting(true)
       await createNewUser({ email: emailAddress, password })
       toast.success(
         "You're in! Check your email for a link to verify your account.",
@@ -42,6 +43,8 @@ export default function SignUpForm(props) {
       )
     } catch (error) {
       toast.error('Something went wrong. Try again.')
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -70,7 +73,7 @@ export default function SignUpForm(props) {
           value={confirm}
         />
         <Button className={s.submit} disabled={submitting}>
-          Sign up
+          {!submitting ? 'Sign Up' : 'Creating...'}
         </Button>
       </div>
       <div className={s.others}>
