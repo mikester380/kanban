@@ -1,5 +1,8 @@
 import { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+import { signIn } from '@/lib/api'
+import { validateEmail } from '@/lib/validations'
+import { getErrorMessage } from '@/lib/helpers'
 import { toast } from 'sonner'
 import s from './AuthForm.module.scss'
 
@@ -12,9 +15,35 @@ export default function SignInForm(props) {
   const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const navigate = useNavigate()
 
   async function onSignIn(event) {
     event.preventDefault()
+
+    // try to validate user's email
+    try {
+      validateEmail.parse(emailAddress)
+    } catch (error) {
+      const [parsedError] = JSON.parse(error)
+      toast.error(parsedError.message)
+      return
+    }
+
+    // try to sign in
+    try {
+      setSubmitting(true)
+      await signIn({ email: emailAddress, password })
+
+      // route to manager on success.
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+
+      const message = getErrorMessage(error)
+      toast.error(message)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -35,7 +64,7 @@ export default function SignInForm(props) {
           value={password}
         />
         <Button className={s.submit} disabled={submitting}>
-          Login
+          {!submitting ? 'Login' : 'Logging in...'}
         </Button>
       </div>
       <div className={s.others}>

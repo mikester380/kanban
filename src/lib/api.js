@@ -14,4 +14,12 @@ async function createNewUser(user) {
   }
 }
 
-export { api, createNewUser }
+async function signIn(user) {
+  const res = await api.auth.signInWithPassword(user)
+
+  if (res.error) {
+    throw res.error
+  }
+}
+
+export { api, createNewUser, signIn }

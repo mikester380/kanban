@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { validateNewUser } from '@/lib/validations'
 import { createNewUser } from '@/lib/api'
+import { getErrorMessage } from '@/lib/helpers'
 import { toast } from 'sonner'
 
 import s from './AuthForm.module.scss'
@@ -29,7 +30,6 @@ export default function SignUpForm(props) {
     } catch (error) {
       const [parsedError] = JSON.parse(error)
       toast.error(parsedError.message)
-
       return
     }
 
@@ -42,7 +42,10 @@ export default function SignUpForm(props) {
         { duration: Infinity }
       )
     } catch (error) {
-      toast.error('Something went wrong. Try again.')
+      const message = getErrorMessage(error)
+      toast.error(message)
+
+      console.log(error)
     } finally {
       setSubmitting(false)
     }
