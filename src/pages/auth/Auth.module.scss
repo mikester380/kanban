@@ -1,6 +1,24 @@
 .wrapper {
   padding: 0 17px;
 
+  @include media('>=tablet') {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+  }
+
+  .inner_wrapper {
+    @include media('>=tablet') {
+      flex-grow: 1;
+      width: 509px;
+      margin: 0 auto;
+    }
+  }
+
   .shelf {
     padding-top: 19px;
     margin-bottom: 82px;

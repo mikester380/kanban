@@ -1,6 +1,6 @@
 import {
-  AuthApiError,
   AuthRetryableFetchError,
+  AuthApiError,
 } from '@supabase/supabase-js'
 
 function getErrorMessage(error) {
