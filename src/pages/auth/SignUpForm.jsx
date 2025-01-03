@@ -9,9 +9,7 @@ import s from './AuthForm.module.scss'
 import TextField from '@/components/ui/text-field'
 import Button from './Button'
 
-export default function SignUpForm(props) {
-  const { swapForm } = props
-
+export default function SignUpForm({ swapForm }) {
   const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('')
   const [confirm, setConfirm] = useState('')

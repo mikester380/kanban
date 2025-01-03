@@ -171,7 +171,11 @@ $im-no-media-breakpoint: 'desktop' !default;
 ///
 ///  /* No output */
 ///
-$im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
+$im-no-media-expressions: (
+  'screen',
+  'portrait',
+  'landscape'
+) !default;
 
 ////
 /// Cross-engine logging engine
@@ -230,10 +234,16 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 /// @return {Boolean} - Returns true if the conditions are intercepted by the static breakpoint
 ///
 @function im-intercepts-static-breakpoint($conditions...) {
-  $no-media-breakpoint-value: map.get($breakpoints, $im-no-media-breakpoint);
+  $no-media-breakpoint-value: map.get(
+    $breakpoints,
+    $im-no-media-breakpoint
+  );
 
   @if not $no-media-breakpoint-value {
-    @if im-log('`#{$im-no-media-breakpoint}` is not a valid breakpoint.') {
+    @if im-log(
+      '`#{$im-no-media-breakpoint}` is not a valid breakpoint.'
+    )
+    {
     }
   }
 
@@ -243,12 +253,24 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
       $prefix: get-expression-prefix($operator);
       $value: get-expression-value($condition, $operator);
 
-      @if ($prefix == 'max' and $value <= $no-media-breakpoint-value) or
-        ($prefix == 'min' and $value > $no-media-breakpoint-value)
+      @if (
+          $prefix ==
+            'max' and
+            $value <=
+            $no-media-breakpoint-value
+        ) or
+        (
+          $prefix ==
+            'min' and
+            $value >
+            $no-media-breakpoint-value
+        )
       {
         @return false;
       }
-    } @else if not list.index($im-no-media-expressions, $condition) {
+    } @else if not
+      list.index($im-no-media-expressions, $condition)
+    {
       @return false;
     }
   }
@@ -294,7 +316,11 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 ///
 @function get-expression-dimension($expression, $operator) {
   $operator-index: string.index($expression, $operator);
-  $parsed-dimension: string.slice($expression, 0, $operator-index - 1);
+  $parsed-dimension: string.slice(
+    $expression,
+    0,
+    $operator-index - 1
+  );
   $parsed-dimension: str-trim($parsed-dimension);
   $dimension: 'width';
 
@@ -313,7 +339,11 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 /// @return {String} - `min` or `max`
 ///
 @function get-expression-prefix($operator) {
-  @return if(list.index(('<', '<=', '≤'), $operator), 'max', 'min');
+  @return if(
+    list.index(('<', '<=', '≤'), $operator),
+    'max',
+    'min'
+  );
 }
 
 ///
@@ -326,7 +356,10 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 ///
 @function get-expression-value($expression, $operator) {
   $operator-index: string.index($expression, $operator);
-  $value: string.slice($expression, $operator-index + string.length($operator));
+  $value: string.slice(
+    $expression,
+    $operator-index + string.length($operator)
+  );
   $trimmedValue: str-trim($value);
 
   @if map.has-key($breakpoints, $trimmedValue) {
@@ -370,7 +403,10 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
   }
 
   $operator: get-expression-operator($expression);
-  $dimension: get-expression-dimension($expression, $operator);
+  $dimension: get-expression-dimension(
+    $expression,
+    $operator
+  );
   $prefix: get-expression-prefix($operator);
   $value: get-expression-value($expression, $operator);
 
@@ -388,7 +424,11 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 ///
 /// @return {List} Sliced list
 ///
-@function slice($list, $start: 1, $end: list.length($list)) {
+@function slice(
+  $list,
+  $start: 1,
+  $end: list.length($list)
+) {
   @if list.length($list) < 1 or $start > $end {
     @return ();
   }
@@ -396,7 +436,11 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
   $result: ();
 
   @for $i from $start through $end {
-    $result: list.append($result, list.nth($list, $i), comma);
+    $result: list.append(
+      $result,
+      list.nth($list, $i),
+      comma
+    );
   }
 
   @return $result;
@@ -420,7 +464,9 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
   @if meta.type-of($value) == 'number' {
     @return $value;
   } @else if meta.type-of($value) != 'string' {
-    $_: im-log('Value for `to-number` should be a number or a string.');
+    $_: im-log(
+      'Value for `to-number` should be a number or a string.'
+    );
   }
 
   $first-character: string.slice($value, 1, 1);
@@ -448,7 +494,12 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
   @for $i from 1 through string.length($value) {
     $character: string.slice($value, $i, $i);
 
-    @if not(list.index(map.keys($numbers), $character) or $character == '.') {
+    @if not(
+      list.index(map.keys($numbers), $character) or
+        $character ==
+        '.'
+    )
+    {
       @return to-length(
         if($minus, -$result, $result),
         string.slice($value, $i)
@@ -461,7 +512,8 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
       $result: $result * 10 + map.get($numbers, $character);
     } @else {
       $digits: $digits * 10;
-      $result: $result + math.div(map.get($numbers, $character), $digits);
+      $result: $result +
+        math.div(map.get($numbers, $character), $digits);
     }
   }
 
@@ -519,7 +571,9 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 @function str-trim($string) {
   @if (str-slice($string, 1, 1) == ' ') {
     @return str-trim(str-slice($string, 2));
-  } @else if (str-slice($string, str-length($string), -1) == ' ') {
+  } @else if
+    (str-slice($string, str-length($string), -1) == ' ')
+  {
     @return str-trim(str-slice($string, 1, -2));
   } @else {
     @return $string;
@@ -564,13 +618,19 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 ///    }
 ///  }
 ///
-@mixin media-context($tweakpoints: (), $tweak-media-expressions: ()) {
+@mixin media-context(
+  $tweakpoints: (),
+  $tweak-media-expressions: ()
+) {
   // Save global configuration
   $global-breakpoints: $breakpoints;
   $global-media-expressions: $media-expressions;
 
   // Update global configuration
-  $breakpoints: map.merge($breakpoints, $tweakpoints) !global;
+  $breakpoints: map.merge(
+    $breakpoints,
+    $tweakpoints
+  ) !global;
   $media-expressions: map.merge(
     $media-expressions,
     $tweak-media-expressions
@@ -613,11 +673,19 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 ///  @include media('>=350px', '<tablet', 'retina3x') { }
 ///
 @mixin media($conditions...) {
-  @if ($im-media-support and list.length($conditions) == 0) or
-    (not $im-media-support and im-intercepts-static-breakpoint($conditions...))
+  @if (
+      $im-media-support and list.length($conditions) == 0
+    ) or
+    (
+      not
+        $im-media-support and
+        im-intercepts-static-breakpoint($conditions...)
+    )
   {
     @content;
-  } @else if ($im-media-support and list.length($conditions) > 0) {
+  } @else if
+    ($im-media-support and list.length($conditions) > 0)
+  {
     @media #{string.unquote(parse-expression(list.nth($conditions, 1)))} {
       // Recursive call
       $sliced-conditions: slice($conditions, 2);

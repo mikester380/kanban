@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import useAuthRoute from '@/hooks/useAuthRoute'
-import s from './Manager.module.scss'
+import styles from './Manager.module.scss'
 
-import Display from './Display'
+import WorkStation from './WorkStation'
 import Panel from './Panel'
 
 export default function Manager() {
@@ -10,13 +10,14 @@ export default function Manager() {
   useAuthRoute()
 
   return (
-    <div className={s.page}>
+    <div className={styles.page}>
       {panelIsActive && <Panel />}
 
-      {/* TODO: it's possible convert this to a memo 
+      {/* TODO: it's possible to convert this to a memo 
       component for performance. */}
-      <Display
-        panelSwitch={() => {
+      <WorkStation
+        panelIsActive={panelIsActive}
+        togglePanelActive={() => {
           setPanelIsActive(!panelIsActive)
         }}
       />

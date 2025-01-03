@@ -1,0 +1,53 @@
+.header {
+  background: $white;
+  border-bottom: 1px solid $link-water;
+  height: 80px;
+  display: flex;
+
+  .logo,
+  .content {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    padding: 0 24px;
+    border-right: 1px solid $link-water;
+  }
+
+  .content {
+    flex: 1;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .board {
+    @include font0-props(20, 2);
+
+    @include media('>=desktop') {
+      @include font0-props(24, 2);
+    }
+  }
+
+  .right_content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .options {
+    @extend %unstyled-button;
+    position: relative;
+    &::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

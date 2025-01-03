@@ -4,7 +4,7 @@ import {
 } from '@supabase/supabase-js'
 
 function getErrorMessage(error) {
-  let code = error.code
+  const code = error.code
 
   if (
     error instanceof AuthRetryableFetchError &&

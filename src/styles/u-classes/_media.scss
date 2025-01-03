@@ -1,0 +1,27 @@
+.on-mobile {
+  @include media('>=tablet') {
+    display: none;
+  }
+}
+
+.on-desktop {
+  @include media('<desktop') {
+    display: none;
+  }
+}
+
+.on-tablet {
+  @include media('<tablet') {
+    display: none;
+  }
+
+  @include media('>=desktop') {
+    display: none;
+  }
+}
+
+.on-tablet-up {
+  @media (max-width: 767.99px) {
+    display: none;
+  }
+}

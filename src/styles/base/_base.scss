@@ -6,16 +6,16 @@ html {
   font-size: 62.5%;
 }
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'j_sans';
   @include font0-props(13);
   background: $light-grey;
+}
+
+svg {
+  display: block;
+}
+
+button {
+  cursor: pointer;
 }

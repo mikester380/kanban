@@ -1,3 +1,3 @@
 export default function Panel(props) {
-  return null
+  return <aside></aside>
 }

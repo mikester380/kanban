@@ -2,6 +2,7 @@ import { useState } from 'react'
 import useNoAuthRoute from '@/hooks/useNoAuthRoute'
 import s from './Auth.module.scss'
 
+import Logo from '@/components/vectors/Logo'
 import SignInForm from './SignInForm'
 import SignUpForm from './SignUpForm'
 
@@ -36,7 +37,7 @@ export default function Auth() {
     <div className={s.wrapper}>
       <div className={s.inner_wrapper}>
         <div className={s.shelf}>
-          <img src="/images/logo.png" aria-hidden="true" />
+          <Logo />
         </div>
         <header className={s.copy}>
           <h1>{formTitle}</h1>

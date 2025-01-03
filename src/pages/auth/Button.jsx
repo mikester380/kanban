@@ -1,9 +1,11 @@
 import s from './Button.module.scss'
 import clsx from 'clsx'
 
-export default function Button(props) {
-  const { children, className, ...otherProps } = props
-
+export default function Button({
+  children,
+  className,
+  ...otherProps
+}) {
   return (
     <button
       {...otherProps}

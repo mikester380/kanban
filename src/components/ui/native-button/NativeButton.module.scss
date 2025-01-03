@@ -2,6 +2,7 @@
   @extend %unstyled-button;
   color: $white;
   transition: all 0.3s ease-in-out;
+  text-wrap: nowrap;
 
   &.stretched {
     width: 100%;
@@ -39,7 +40,7 @@
   &.primary {
     background: $main-purple;
 
-    &:hover {
+    &:not(:disabled) &:hover {
       background: $main-purple2;
     }
   }
@@ -51,5 +52,10 @@
     &:hover {
       background: color.change($main-purple, $alpha: 0.25);
     }
+  }
+
+  &:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
   }
 }

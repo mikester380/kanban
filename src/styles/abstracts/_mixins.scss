@@ -40,6 +40,15 @@
     }
   }
 
+  @if $size == 20 {
+    line-height: 1.25;
+    font-size: 2rem;
+
+    @if $type == 2 {
+      font-weight: 700;
+    }
+  }
+
   @if $size == 24 {
     line-height: 1.25;
     font-size: 2.4rem;
