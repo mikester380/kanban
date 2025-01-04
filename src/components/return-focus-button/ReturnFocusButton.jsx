@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 function ReturnFocusButton({
   listeningTo, // the dialog's active state,
@@ -9,19 +9,21 @@ function ReturnFocusButton({
   const watching = useRef(false)
   const button = useRef()
 
-  const isInactive = !listeningTo
+  useEffect(() => {
+    const isInactive = !listeningTo
 
-  // check if we're watching a dialog and if the dialog is inactive
-  if (watching.current && isInactive) {
-    button.current.blur()
-    watching.current = false
-  }
+    // check if we're watching a dialog and if the dialog is inactive
+    if (watching && isInactive) {
+      button.current.focus()
+      watching.current = false
+    }
+  }, [listeningTo])
 
   return (
     <button
       {...otherProps}
       onClick={() => {
-        if (!watching.current) {
+        if (!watching) {
           watching.current = true
         }
         onClick?.()
