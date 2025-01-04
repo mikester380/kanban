@@ -7,7 +7,7 @@ import Panel from './Panel'
 
 export default function Manager() {
   const [panelIsActive, setPanelIsActive] = useState(false)
-  useAuthRoute()
+  // useAuthRoute()
 
   return (
     <div className={s.page}>

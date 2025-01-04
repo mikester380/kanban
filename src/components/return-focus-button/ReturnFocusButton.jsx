@@ -6,23 +6,24 @@ function ReturnFocusButton({
   children,
   ...otherProps
 }) {
-  const [watching, setWatching] = useState(false)
+  const watching = useRef(false)
   const button = useRef()
-  useEffect(() => {
-    const isInactive = !listeningTo
 
-    // check if we're watching a dialog and if the dialog is inactive
-    if (watching && isInactive) {
-      button.current.focus()
-      setWatching(false)
-    }
-  }, [listeningTo, watching])
+  const isInactive = !listeningTo
+
+  // check if we're watching a dialog and if the dialog is inactive
+  if (watching.current && isInactive) {
+    button.current.blur()
+    watching.current = false
+  }
 
   return (
     <button
       {...otherProps}
       onClick={() => {
-        setWatching(true)
+        if (!watching.current) {
+          watching.current = true
+        }
         onClick?.()
       }}
       ref={button}

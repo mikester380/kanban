@@ -6,6 +6,7 @@ import ArrowStatus from '@/components/vectors/ArrowStatus'
 import Plus from '@/components/vectors/Plus'
 import OptionsToggle from './OptionsToggle'
 import NativeButton from '@/components/ui/native-button'
+import ReturnFocusButton from '@/components/return-focus-button'
 
 function MobileHeader({
   panelIsActive,
@@ -15,13 +16,14 @@ function MobileHeader({
     <div className={clsx(s.header, 'on-mobile')}>
       <div className={s.left}>
         <Logo />
-        <button
-          className={s.toggle}
+        <ReturnFocusButton
+          listeningTo={panelIsActive}
           onClick={togglePanelActive}
+          className={s.toggle}
         >
           {'Platform Launch'}
           <ArrowStatus active={panelIsActive} />
-        </button>
+        </ReturnFocusButton>
       </div>
       <div className={s.right}>
         <NativeButton stretched={false} disabled={true}>

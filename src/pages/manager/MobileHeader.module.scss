@@ -1,7 +1,9 @@
 .header {
+  height: var(--mobile-header-height);
   display: flex;
   justify-content: space-between;
-  padding: 16px;
+  align-items: center;
+  padding: 0 16px;
   background: $white;
   border-bottom: 1px solid $link-water;
 
