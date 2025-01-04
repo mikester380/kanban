@@ -1,3 +1,15 @@
+@mixin hide {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+@mixin show {
+  position: revert;
+  opacity: revert;
+  visibility: revert;
+}
+
 .on-mobile {
   @include media('>=tablet') {
     display: none;
@@ -21,7 +33,12 @@
 }
 
 .on-tablet-up {
-  @media (max-width: 767.99px) {
+  // @include hide;
+  // @include media('>=tablet') {
+  //   @include show;
+  // }
+
+  @include media('<tablet') {
     display: none;
   }
 }

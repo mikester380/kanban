@@ -15,7 +15,9 @@ function DesktopHeader({ logoIsHidden }) {
       )}
       <div className={s.content}>
         <div className={s.left_content}>
-          <div className={s.board}>{'Platform Launch'}</div>
+          <div className={s.active_board}>
+            {'Platform Launch'}
+          </div>
         </div>
         <div className={s.right_content}>
           <NativeButton

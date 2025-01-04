@@ -1,6 +1,8 @@
 .header {
+  --header-lines: 1px solid #{$link-water};
+
   background: $white;
-  border-bottom: 1px solid $link-water;
+  border-bottom: var(--header-lines);
   height: 80px;
   display: flex;
 
@@ -12,7 +14,7 @@
 
   .logo {
     padding: 0 24px;
-    border-right: 1px solid $link-water;
+    border-right: var(--header-lines);
   }
 
   .content {
@@ -22,7 +24,7 @@
     justify-content: space-between;
   }
 
-  .board {
+  .active_board {
     @include font0-props(20, 2);
 
     @include media('>=desktop') {

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import useAuthRoute from '@/hooks/useAuthRoute'
-import styles from './Manager.module.scss'
+import s from './Manager.module.scss'
 
 import WorkStation from './WorkStation'
 import Panel from './Panel'
@@ -10,7 +10,7 @@ export default function Manager() {
   useAuthRoute()
 
   return (
-    <div className={styles.page}>
+    <div className={s.page}>
       {panelIsActive && <Panel />}
 
       {/* TODO: it's possible to convert this to a memo 
