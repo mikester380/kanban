@@ -14,30 +14,12 @@
     gap: 16px;
   }
 
-  .toggle,
-  .options {
-    @extend %unstyled-button;
-  }
-
   .toggle {
+    @extend %unstyled-button;
     @include font0-props(18, 2);
     display: flex;
     align-items: center;
     gap: 8px;
     text-wrap: nowrap;
-  }
-
-  .options {
-    position: relative;
-    &::before {
-      content: '';
-      display: block;
-      width: 30px;
-      height: 30px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
   }
 }
