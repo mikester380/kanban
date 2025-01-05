@@ -2,12 +2,12 @@ import { memo } from 'react'
 import s from './WorkStation.module.scss'
 import Header from './Header'
 
-function WorkStation({ panelIsActive, togglePanelActive }) {
+function WorkStation({ panelActive, setPanelActive }) {
   return (
     <div className={s.wrap}>
       <Header
-        panelIsActive={panelIsActive}
-        togglePanelActive={togglePanelActive}
+        panelActive={panelActive}
+        setPanelActive={setPanelActive}
       />
     </div>
   )

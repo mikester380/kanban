@@ -6,20 +6,18 @@ import WorkStation from './WorkStation'
 import Panel from './Panel'
 
 export default function Manager() {
-  const [panelIsActive, setPanelIsActive] = useState(false)
-  // useAuthRoute()
+  const [panelActive, setPanelActive] = useState(false)
+  useAuthRoute()
 
   return (
     <div className={s.page}>
-      {panelIsActive && <Panel />}
-
-      {/* TODO: it's possible to convert this to a memo 
-      component for performance. */}
+      <Panel
+        panelActive={panelActive}
+        setPanelActive={setPanelActive}
+      />
       <WorkStation
-        panelIsActive={panelIsActive}
-        togglePanelActive={() => {
-          setPanelIsActive(!panelIsActive)
-        }}
+        panelActive={panelActive}
+        setPanelActive={setPanelActive}
       />
     </div>
   )

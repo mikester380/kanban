@@ -2,16 +2,22 @@ import MobileHeader from './MobileHeader'
 import DesktopHeader from './DesktopHeader'
 
 export default function Header({
-  panelIsActive,
-  togglePanelActive,
+  panelActive,
+  setPanelActive,
 }) {
   return (
     <>
       <MobileHeader
-        panelIsActive={panelIsActive}
-        togglePanelActive={togglePanelActive}
+        panelActive={panelActive}
+        // TODO: might wrap this in a useCallback later for performance.
+        togglePanelActive={() => {
+          setPanelActive(!panelActive)
+        }}
       />
-      <DesktopHeader logoIsHidden={panelIsActive} />
+      <DesktopHeader
+        logoIsHidden={panelActive}
+        setPanelActive={setPanelActive}
+      />
     </>
   )
 }

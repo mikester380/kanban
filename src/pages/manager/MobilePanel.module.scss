@@ -2,8 +2,31 @@
   position: fixed;
   width: 100%;
   height: calc(100dvh - var(--mobile-header-height));
-  top: var(--mobile-header-height);
+  bottom: 0;
   left: 0;
   background: $proper-black;
   opacity: 0.5;
+}
+
+.panel {
+  width: min(100%, 264px);
+  position: fixed;
+  top: calc(var(--mobile-header-height) + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: $white;
+  border-radius: 8px;
+  padding: 16px 0;
+
+  .all_boards {
+    padding: 0 24px;
+
+    .title {
+      @include font0-props(12, 2);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: $medium-grey;
+      margin-bottom: 19px;
+    }
+  }
 }

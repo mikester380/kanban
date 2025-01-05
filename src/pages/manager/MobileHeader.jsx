@@ -8,21 +8,18 @@ import OptionsToggle from './OptionsToggle'
 import NativeButton from '@/components/ui/native-button'
 import ReturnFocusButton from '@/components/return-focus-button'
 
-function MobileHeader({
-  panelIsActive,
-  togglePanelActive,
-}) {
+function MobileHeader({ panelActive, togglePanelActive }) {
   return (
     <div className={clsx(s.header, 'on-mobile')}>
       <div className={s.left}>
         <Logo />
         <ReturnFocusButton
-          listeningTo={panelIsActive}
+          listeningTo={panelActive}
           onClick={togglePanelActive}
           className={s.toggle}
         >
           {'Platform Launch'}
-          <ArrowStatus active={panelIsActive} />
+          <ArrowStatus active={panelActive} />
         </ReturnFocusButton>
       </div>
       <div className={s.right}>

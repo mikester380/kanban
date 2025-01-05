@@ -13,8 +13,8 @@ function ReturnFocusButton({
     const isInactive = !listeningTo
 
     // check if we're watching a dialog and if the dialog is inactive
-    if (watching && isInactive) {
-      button.current.focus()
+    if (watching.current && isInactive) {
+      button.current.focus({ focusVisible: true })
       watching.current = false
     }
   }, [listeningTo])
@@ -22,11 +22,11 @@ function ReturnFocusButton({
   return (
     <button
       {...otherProps}
-      onClick={() => {
-        if (!watching) {
+      onClick={(event) => {
+        if (!watching.current) {
           watching.current = true
         }
-        onClick?.()
+        onClick?.(event)
       }}
       ref={button}
     >

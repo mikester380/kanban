@@ -10,6 +10,8 @@ body {
   font-family: 'j_sans';
   @include font0-props(13);
   background: $light-grey;
+
+  --mobile-header-height: 64px;
 }
 
 svg {
