@@ -3,7 +3,6 @@ import {
   RouterProvider,
 } from 'react-router'
 import Sonner from '@/components/ui/sonner'
-
 import Auth from './pages/auth'
 import Manager from './pages/manager'
 
@@ -13,7 +12,12 @@ const routes = createBrowserRouter([
     element: <Manager />,
 
     // we'll add the route that displays a board here
-    children: [],
+    children: [
+      {
+        path: '/boards/:boardId',
+        element: <div></div>,
+      },
+    ],
   },
   {
     path: '/auth',
