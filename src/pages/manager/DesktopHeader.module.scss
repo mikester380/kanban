@@ -6,6 +6,10 @@
   height: 80px;
   display: flex;
 
+  @include media('>=desktop') {
+    height: 96px;
+  }
+
   .logo,
   .content {
     display: flex;

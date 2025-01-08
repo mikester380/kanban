@@ -3,29 +3,31 @@
   color: $white;
   transition: all 0.3s ease-in-out;
   text-wrap: nowrap;
+  display: flex;
+  align-items: center;
 
   &.stretched {
     width: 100%;
+    padding: 0;
   }
 
   &.small {
-    @include font0-props(13, 2);
-    padding: 8px 18px;
+    height: 32px;
+    padding: 0 18px;
     border-radius: 20px;
+  }
 
-    &.stretched {
-      padding: 8px 0;
-    }
+  &.medium {
+    @include font0-props(13, 2);
+    height: 40px;
+    padding: 0 18px;
   }
 
   &.large {
-    padding: 14px 17px;
-    border-radius: 24px;
     @include font0-props(15, 2);
-
-    &.stretched {
-      padding: 14px 0;
-    }
+    height: 48px;
+    padding: 0 18px;
+    border-radius: 24px;
   }
 
   &.destroy {

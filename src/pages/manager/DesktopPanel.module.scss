@@ -1,0 +1,15 @@
+.panel {
+  flex-shrink: 0;
+  width: 300px;
+  background: $white;
+  border-right: 1px solid $link-water;
+
+  .logo {
+    padding: 33px 0 0 26px;
+    margin-bottom: 54px;
+
+    @include media('>=desktop') {
+      padding-left: 33px;
+    }
+  }
+}

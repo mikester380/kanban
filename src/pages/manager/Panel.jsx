@@ -1,5 +1,6 @@
 import MobilePanel from './MobilePanel'
 import DesktopPanel from './DesktopPanel'
+import PanelTrigger from './PanelTrigger'
 
 export default function Panel({
   panelActive,
@@ -14,6 +15,11 @@ export default function Panel({
       {panelActive && (
         <DesktopPanel
           hidePanel={() => setPanelActive(false)}
+        />
+      )}
+      {!panelActive && (
+        <PanelTrigger
+          showPanel={() => setPanelActive(true)}
         />
       )}
     </>
